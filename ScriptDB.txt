@@ -1,0 +1,278 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 12.1
+-- Dumped by pg_dump version 12.1
+
+-- Started on 2020-02-11 22:56:25
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 2846 (class 1262 OID 16432)
+-- Name: dbposts; Type: DATABASE; Schema: -; Owner: postgres
+--
+
+CREATE DATABASE dbposts WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'Spanish_Colombia.1252' LC_CTYPE = 'Spanish_Colombia.1252';
+
+
+ALTER DATABASE dbposts OWNER TO postgres;
+
+\connect dbposts
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 6 (class 2615 OID 16433)
+-- Name: posts; Type: SCHEMA; Schema: -; Owner: postgres
+--
+
+CREATE SCHEMA posts;
+
+
+ALTER SCHEMA posts OWNER TO postgres;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 207 (class 1259 OID 16460)
+-- Name: imagenes; Type: TABLE; Schema: posts; Owner: postgres
+--
+
+CREATE TABLE posts.imagenes (
+    id integer NOT NULL,
+    ruta text NOT NULL,
+    post_id integer NOT NULL
+);
+
+
+ALTER TABLE posts.imagenes OWNER TO postgres;
+
+--
+-- TOC entry 206 (class 1259 OID 16458)
+-- Name: imagenes_id_seq; Type: SEQUENCE; Schema: posts; Owner: postgres
+--
+
+CREATE SEQUENCE posts.imagenes_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE posts.imagenes_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2847 (class 0 OID 0)
+-- Dependencies: 206
+-- Name: imagenes_id_seq; Type: SEQUENCE OWNED BY; Schema: posts; Owner: postgres
+--
+
+ALTER SEQUENCE posts.imagenes_id_seq OWNED BY posts.imagenes.id;
+
+
+--
+-- TOC entry 205 (class 1259 OID 16444)
+-- Name: post; Type: TABLE; Schema: posts; Owner: postgres
+--
+
+CREATE TABLE posts.post (
+    id integer NOT NULL,
+    titulo text NOT NULL,
+    descripcion text NOT NULL,
+    fecha date NOT NULL,
+    usuario_id integer NOT NULL
+);
+
+
+ALTER TABLE posts.post OWNER TO postgres;
+
+--
+-- TOC entry 204 (class 1259 OID 16442)
+-- Name: post_id_seq; Type: SEQUENCE; Schema: posts; Owner: postgres
+--
+
+CREATE SEQUENCE posts.post_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE posts.post_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2848 (class 0 OID 0)
+-- Dependencies: 204
+-- Name: post_id_seq; Type: SEQUENCE OWNED BY; Schema: posts; Owner: postgres
+--
+
+ALTER SEQUENCE posts.post_id_seq OWNED BY posts.post.id;
+
+
+--
+-- TOC entry 203 (class 1259 OID 16434)
+-- Name: usuario; Type: TABLE; Schema: posts; Owner: postgres
+--
+
+CREATE TABLE posts.usuario (
+    identificacion text NOT NULL,
+    nombres text NOT NULL,
+    apellidos text NOT NULL,
+    usuario text NOT NULL,
+    contrasena text NOT NULL,
+    correo text NOT NULL
+);
+
+
+ALTER TABLE posts.usuario OWNER TO postgres;
+
+--
+-- TOC entry 2702 (class 2604 OID 16463)
+-- Name: imagenes id; Type: DEFAULT; Schema: posts; Owner: postgres
+--
+
+ALTER TABLE ONLY posts.imagenes ALTER COLUMN id SET DEFAULT nextval('posts.imagenes_id_seq'::regclass);
+
+
+--
+-- TOC entry 2701 (class 2604 OID 16447)
+-- Name: post id; Type: DEFAULT; Schema: posts; Owner: postgres
+--
+
+ALTER TABLE ONLY posts.post ALTER COLUMN id SET DEFAULT nextval('posts.post_id_seq'::regclass);
+
+
+--
+-- TOC entry 2840 (class 0 OID 16460)
+-- Dependencies: 207
+-- Data for Name: imagenes; Type: TABLE DATA; Schema: posts; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2838 (class 0 OID 16444)
+-- Dependencies: 205
+-- Data for Name: post; Type: TABLE DATA; Schema: posts; Owner: postgres
+--
+
+INSERT INTO posts.post VALUES (1, '5 mejores hosting gratuitos 2020', 'Heroku
+Firebase
+GitHub Pages
+netlify
+Zeit', '2020-02-11', 1);
+INSERT INTO posts.post VALUES (2, 'asdqwerty', 'descrxxxxxc', '2020-02-11', 1);
+INSERT INTO posts.post VALUES (3, 'asdqwerty', 'descrxxxxxc', '2020-02-11', 1);
+INSERT INTO posts.post VALUES (4, 'asdqwerty', 'descrxxxxxc', '2020-02-11', 1);
+INSERT INTO posts.post VALUES (5, 'asdqwerty', 'descrxxxxxc', '2020-02-11', 1);
+INSERT INTO posts.post VALUES (6, 'asdqwerty', 'descrxxxxxc', '2020-02-11', 1);
+INSERT INTO posts.post VALUES (7, 'asdqwerty', 'descrxxxxxc', '2020-02-11', 1);
+INSERT INTO posts.post VALUES (8, 'asdqwerty', 'descrxxxxxc', '2020-02-11', 1);
+INSERT INTO posts.post VALUES (9, 'asdqwerty', 'descrxxxxxc', '2020-02-11', 1);
+INSERT INTO posts.post VALUES (10, 'asdqwerty', 'descrxxxxxc', '2020-02-11', 1);
+
+
+--
+-- TOC entry 2836 (class 0 OID 16434)
+-- Dependencies: 203
+-- Data for Name: usuario; Type: TABLE DATA; Schema: posts; Owner: postgres
+--
+
+INSERT INTO posts.usuario VALUES ('1067917149', 'Deimer Joe', 'Navarro Martinez', 'deimerjoe', 'passw12345', 'dnavarromartinez@correo.unicordoba.edu.co');
+
+
+--
+-- TOC entry 2849 (class 0 OID 0)
+-- Dependencies: 206
+-- Name: imagenes_id_seq; Type: SEQUENCE SET; Schema: posts; Owner: postgres
+--
+
+SELECT pg_catalog.setval('posts.imagenes_id_seq', 1, false);
+
+
+--
+-- TOC entry 2850 (class 0 OID 0)
+-- Dependencies: 204
+-- Name: post_id_seq; Type: SEQUENCE SET; Schema: posts; Owner: postgres
+--
+
+SELECT pg_catalog.setval('posts.post_id_seq', 1, false);
+
+
+--
+-- TOC entry 2708 (class 2606 OID 16468)
+-- Name: imagenes pk_imagenes; Type: CONSTRAINT; Schema: posts; Owner: postgres
+--
+
+ALTER TABLE ONLY posts.imagenes
+    ADD CONSTRAINT pk_imagenes PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2706 (class 2606 OID 16452)
+-- Name: post pk_post; Type: CONSTRAINT; Schema: posts; Owner: postgres
+--
+
+ALTER TABLE ONLY posts.post
+    ADD CONSTRAINT pk_post PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2704 (class 2606 OID 16441)
+-- Name: usuario pk_usuario; Type: CONSTRAINT; Schema: posts; Owner: postgres
+--
+
+ALTER TABLE ONLY posts.usuario
+    ADD CONSTRAINT pk_usuario PRIMARY KEY (identificacion);
+
+
+--
+-- TOC entry 2709 (class 2606 OID 16469)
+-- Name: imagenes fk_imagenes_post; Type: FK CONSTRAINT; Schema: posts; Owner: postgres
+--
+
+ALTER TABLE ONLY posts.imagenes
+    ADD CONSTRAINT fk_imagenes_post FOREIGN KEY (post_id) REFERENCES posts.post(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2851 (class 0 OID 0)
+-- Dependencies: 2709
+-- Name: CONSTRAINT fk_imagenes_post ON imagenes; Type: COMMENT; Schema: posts; Owner: postgres
+--
+
+COMMENT ON CONSTRAINT fk_imagenes_post ON posts.imagenes IS 'Llave foranea referente al post que corresponden las imagenes';
+
+
+-- Completed on 2020-02-11 22:56:26
+
+--
+-- PostgreSQL database dump complete
+--
+
